@@ -9,7 +9,7 @@ public class Sorting {
     public static int sortMethodNumber;
     public static List<Integer> numbersToSave;
 
-    public static void selectSortingMethod() {// to select sorting method
+    public static void selectSortingMethod(List<Integer> unsortedNumbers) {// to select sorting method
 
         System.out.println("\n Select sorting method by" + "\n" +
                 "selecting corresponding number: " + "\n" + "\n" +
@@ -19,19 +19,25 @@ public class Sorting {
         );
 
         try {
-            Main.scanner = new Scanner(System.in);
+            Scanner scanner = new Scanner(System.in);
 
-            sortMethodNumber = Main.scanner.nextInt();
+            sortMethodNumber = scanner.nextInt();
             if (sortMethodNumber == 1) {
-                bubbleSorting(FileUtils.unsortedNumbers);
+
+                bubbleSorting(unsortedNumbers);
+                return;
             }
             else if (sortMethodNumber == 2) {
-                insertionSorting(FileUtils.unsortedNumbers);
+                insertionSorting(unsortedNumbers);
+                return;
             }
             else if  (sortMethodNumber == 3) {
-                choiceSorting(FileUtils.unsortedNumbers);
+                choiceSorting(unsortedNumbers);
+                return;
             }
-            else System.out.println(" You can enter just 1, 2 or 3 numbers for choosing sorting method ");
+            else System.out.println(" You can enter just 1, 2 or 3 numbers for choosing sorting method. Run program again. ");
+            // here I tried to make recursion of selectSortingMethod() or loop for waiting correct value of sortMethodNumber in case of wrong value. But failure
+
         }
 
         catch (Exception e){

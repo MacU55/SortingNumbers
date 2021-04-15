@@ -8,18 +8,17 @@ import java.util.Scanner;
 
 public class FileUtils {
 
-    public static List<Integer> unsortedNumbers;
-
     //method to get unsorted list of numbers, reading numbers from file-source
+
     public static List<Integer> getUnsortedNumbers(File fileToRead) {
 
-        unsortedNumbers = new ArrayList<>();
+        List <Integer> unsortedNumbers = new ArrayList<>();
 
         try {
-            Main.scanner = new Scanner(fileToRead);
+            Scanner scanner = new Scanner(fileToRead);
             int i = 0;
-            while (Main.scanner.hasNext()) {
-                unsortedNumbers.add(i++, Main.scanner.nextInt());
+            while (scanner.hasNext()) {
+                unsortedNumbers.add(i++, scanner.nextInt());
             }
         } catch (NumberFormatException t) {
             System.out.println("check format data in file");
