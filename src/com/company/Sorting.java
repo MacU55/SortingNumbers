@@ -3,47 +3,57 @@ package com.company;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import static com.company.Main.*;
 
 public class Sorting {
 
     public static int sortMethodNumber;
-    // to select sorting method
-    public static void selectSortingMethod(){
+    public static List<Integer> numbersToSave;
 
-        System.out.println ("\n Select sorting method by" + "\n" +
+    public static void selectSortingMethod(List<Integer> unsortedNumbers) {// to select sorting method
+
+        System.out.println("\n Select sorting method by" + "\n" +
                 "selecting corresponding number: " + "\n" + "\n" +
                 "Bubble sorting - press key '1' " + "\n" +
                 "Sorting by inserts - press key '2' " + "\n" +
                 "Sorting by choice - press key '3' " + "\n"
         );
 
-        Scanner scanSelect = new Scanner(System.in);
+        try {
+            Scanner scanner = new Scanner(System.in);
 
-        if (scanSelect.hasNext()){
-            sortMethodNumber = scanSelect.nextInt();
+            sortMethodNumber = scanner.nextInt();
+            if (sortMethodNumber == 1) {
+
+                bubbleSorting(unsortedNumbers);
+                return;
+            }
+            else if (sortMethodNumber == 2) {
+                insertionSorting(unsortedNumbers);
+                return;
+            }
+            else if  (sortMethodNumber == 3) {
+                choiceSorting(unsortedNumbers);
+                return;
+            }
+            else System.out.println(" You can enter just 1, 2 or 3 numbers for choosing sorting method. Run program again. ");
+            // here I tried to make recursion of selectSortingMethod() or loop for waiting correct value of sortMethodNumber in case of wrong value. But failure
 
         }
-        if (sortMethodNumber == 1) {
-            bubbleSorting(unsortedNumbers);
+
+        catch (Exception e){
+            e.printStackTrace();
         }
-        else if (sortMethodNumber == 2) {
-            insertionSorting(unsortedNumbers);
-        }
-        else if  (sortMethodNumber == 3) {
-            choiceSorting(unsortedNumbers);
-        }
+
     }
 
-    //sorting method - bubble  sorting
-    public static List<Integer> bubbleSorting (List<Integer> arrayListUnsorted){
+    public static List<Integer> bubbleSorting(List<Integer> arrayListUnsorted) {//sorting method - bubble  sorting
 
         boolean sorted = false;// this variable controls quantity of iterations
         int temp;// variable for swapping neighbour numbers in array
-        while (!sorted){//outer cycle
+        while (!sorted) {//outer cycle
             sorted = true;//condition to stop outer cycle
-            for(int i = 0; i < arrayListUnsorted.size()-1; i++){//inner cycle
-                if(arrayListUnsorted.get(i) > arrayListUnsorted.get(i + 1)){//condition for swapping neighbour numbers in array
+            for (int i = 0; i < arrayListUnsorted.size() - 1; i++) {//inner cycle
+                if (arrayListUnsorted.get(i) > arrayListUnsorted.get(i + 1)) {//condition for swapping neighbour numbers in array
                     temp = arrayListUnsorted.get(i);
                     arrayListUnsorted.set(i, arrayListUnsorted.get(i + 1));
                     arrayListUnsorted.set(i + 1, temp);
@@ -57,7 +67,7 @@ public class Sorting {
     }
 
     //sorting method - sorting by insertions
-    public static List<Integer> insertionSorting (List<Integer> arrayListUnsorted) {
+    public static List<Integer> insertionSorting(List<Integer> arrayListUnsorted) {
 
         for (int i = 1; i < arrayListUnsorted.size(); i++) {//outer cycle
             int current = arrayListUnsorted.get(i);
@@ -73,7 +83,7 @@ public class Sorting {
     }
 
     //sorting method - sorting by choice
-    public static List<Integer> choiceSorting (List<Integer> arrayListUnsorted) {
+    public static List<Integer> choiceSorting(List<Integer> arrayListUnsorted) {
 
         for (int i = 0; i < arrayListUnsorted.size(); i++) { // outer cycle
             int min = arrayListUnsorted.get(i);
@@ -93,3 +103,4 @@ public class Sorting {
         return numbersToSave;
     }
 }
+
