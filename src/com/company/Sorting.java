@@ -11,9 +11,8 @@ public class Sorting {
 
     public static void selectSortingMethod(List<Integer> unsortedNumbers) {// to select sorting method
 
-        System.out.println("\n Select sorting method by" + "\n" +
-                "selecting corresponding number: " + "\n" + "\n" +
-                "Bubble sorting - press key '1' " + "\n" +
+        System.out.println("\n Select sorting method by selecting corresponding number: "   +
+                "\n Bubble sorting - press key '1' " + "\n" +
                 "Sorting by inserts - press key '2' " + "\n" +
                 "Sorting by choice - press key '3' " + "\n"
         );
@@ -37,7 +36,6 @@ public class Sorting {
             }
             else System.out.println(" You can enter just 1, 2 or 3 numbers for choosing sorting method. Run program again. ");
             // here I tried to make recursion of selectSortingMethod() or loop for waiting correct value of sortMethodNumber in case of wrong value. But failure
-
         }
 
         catch (Exception e){
